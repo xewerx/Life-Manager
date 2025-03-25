@@ -1,0 +1,38 @@
+{
+  "name": "lifemanager",
+  "version": "1.0.0",
+  "description": "Life Manager Application",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "nodemon src/index.ts",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "biome format --write .",
+    "lint": "biome lint .",
+    "check": "biome check --apply ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xewerx/Life-Manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xewerx/Life-Manager/issues"
+  },
+  "homepage": "https://github.com/xewerx/Life-Manager#readme",
+  "dependencies": {
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.13.13",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4"
+  }
+}
