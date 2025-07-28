@@ -1,9 +1,14 @@
+import type { Container } from "inversify";
 import type { Route } from "./module.types";
 
 export abstract class Module {
-  constructor(public name: string, public prefix: string) {}
+  constructor(
+    public name: string,
+    public prefix: string,
+    public container: Container
+  ) {}
 
-  private routes: Route[] = [];
+  protected routes: Route[] = [];
 
   public getRoutes() {
     return this.routes;
