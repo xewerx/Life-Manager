@@ -1,6 +1,8 @@
 import express from "express";
 import type { Express, Request, Response } from "express";
 import dotenv from "dotenv";
+import notesModule from "./modules/notes";
+import { loadRoutes } from "./shared/routes-loader";
 
 // Load environment variables
 dotenv.config();
@@ -13,15 +15,6 @@ const apiPrefix = process.env.API_PREFIX || "/api/v1";
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Basic route
-app.get("/", (_req: Request, res: Response) => {
-  res.json({
-    message: "Welcome to Life Manager API",
-    version: process.env.API_VERSION,
-    environment: process.env.NODE_ENV,
-  });
-});
-
 // API routes will be prefixed with API_PREFIX
 app.get(`${apiPrefix}/health`, (_req: Request, res: Response) => {
   res.json({
@@ -30,12 +23,15 @@ app.get(`${apiPrefix}/health`, (_req: Request, res: Response) => {
   });
 });
 
+// Load routes
+loadRoutes(app, apiPrefix, [notesModule]);
+
 // Start server
 app.listen(port, () => {
-  // biome-ignore lint/suspicious/noConsoleLog: <explanation>
+  // biome-ignore lint/suspicious/noConsoleLog: TODO: logger
   console.log(
     `Server is running on port ${port} in ${process.env.NODE_ENV} mode`
   );
-  // biome-ignore lint/suspicious/noConsoleLog: <explanation>
+  // biome-ignore lint/suspicious/noConsoleLog: TODO: logger
   console.log(`API is available at http://localhost:${port}${apiPrefix}`);
 });
