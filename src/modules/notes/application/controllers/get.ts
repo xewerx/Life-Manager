@@ -1,21 +1,24 @@
-import { makeModuleLogger } from "../../../../shared/make-module-logger";
+import type { Logger } from "../../../../shared/make-module-logger";
 import { Controller } from "../../adapters/http/controller";
 import type { Request, Response } from "express";
+import { NOTES_CONTAINER_TYPES } from "../../infrastructure/container/types";
+import { inject, injectable } from "inversify";
+import type { Note } from "../dto/note";
 
-type Note = {
-  name: string;
-};
+@injectable()
+export class GetNotesController extends Controller<Note[]> {
+  constructor(
+    @inject(NOTES_CONTAINER_TYPES.Logger)
+    protected readonly logger: Logger
+  ) {
+    super(logger);
+  }
 
-export const GetNotesController = new Controller<Note[]>(
-  makeModuleLogger({
-    module: "notes",
-  }),
-  async (req: Request, res: Response): Promise<Note[]> => {
-    console.log(req, res);
+  async handle(_req: Request, _res: Response): Promise<Note[]> {
     return [
       {
         name: "note1",
       },
     ];
   }
-);
+}

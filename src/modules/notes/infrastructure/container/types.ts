@@ -1,3 +1,7 @@
 export const NOTES_CONTAINER_TYPES = {
-  Logger: Symbol.for("Logger"),
+  Logger: Symbol("Logger"),
+
+  Controller: {
+    GetNotes: Symbol("GetNotesController"),
+  },
 };
