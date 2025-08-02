@@ -8,10 +8,11 @@ import type { Controller } from "./ports/http/controller";
 
 export class NotesModule extends Module {
   constructor() {
-    const container = makeContainer();
-    const prefix = "notes";
+    super("Notes", "notes");
+  }
 
-    super("Notes", prefix, container);
+  async init() {
+    const container = await makeContainer();
 
     const getNotesController = container.get<Controller<Request, Response>>(
       NOTES_CONTAINER_TYPES.Controller.GetNotes

@@ -19,8 +19,8 @@ export abstract class Controller<ResBody>
         this.logger.info("Request handled");
 
         res.status(ResponseCodes.OK).json(result);
-      } catch (error) {
-        this.logger.error({ error }, "Error handling request");
+      } catch (err) {
+        this.logger.error({ err }, "Error handling request");
         res
           .status(ErrorCodes.INTERNAL_SERVER_ERROR as number)
           .json({ error: "Internal server error" });

@@ -4,4 +4,8 @@ export const NOTES_CONTAINER_TYPES = {
   Controller: {
     GetNotes: Symbol("GetNotesController"),
   },
+
+  Repository: {
+    Notes: Symbol("NotesRepository"),
+  },
 };
