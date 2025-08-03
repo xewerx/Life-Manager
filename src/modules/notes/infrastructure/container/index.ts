@@ -7,7 +7,8 @@ import {
 import { injectControllers } from "./inject-controllers";
 import { MongoDatabase } from "../../adapters/database/mongo/mongo";
 import { checkForEnvironmentVariable } from "../../shared/utils/check-for-env-variable";
-import { injectRepositories } from "./injectRepositories";
+import { injectRepositories } from "./inject-repositories";
+import { injectCommands } from "./inject-commands";
 
 export const makeContainer = async () => {
   const container = new Container();
@@ -29,6 +30,7 @@ export const makeContainer = async () => {
   container.bind<Logger>(NOTES_CONTAINER_TYPES.Logger).toConstantValue(logger);
 
   injectRepositories(container);
+  injectCommands(container);
   injectControllers(container);
 
   return container;
