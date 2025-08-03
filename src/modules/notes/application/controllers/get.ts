@@ -7,7 +7,7 @@ import type { Note } from "../dto/note";
 import type { NotesRepository } from "../../domain/repositories/notes-repository";
 
 @injectable()
-export class GetNotesController extends Controller<Note[]> {
+export class GetNotesController extends Controller<void, Note[]> {
   constructor(
     @inject(NOTES_CONTAINER_TYPES.Logger)
     protected readonly logger: Logger,
@@ -25,4 +25,6 @@ export class GetNotesController extends Controller<Note[]> {
       content: note.content,
     }));
   }
+
+  async validate(_req: Request): Promise<void> {}
 }

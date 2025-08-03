@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { type InferSchemaType } from "mongoose";
 
 const noteSchema = new mongoose.Schema({
   id: { type: String, required: true, unique: true },
@@ -10,3 +10,4 @@ const noteSchema = new mongoose.Schema({
 });
 
 export const NoteModel = mongoose.model("Note", noteSchema);
+export type NoteModelType = InferSchemaType<typeof noteSchema>;

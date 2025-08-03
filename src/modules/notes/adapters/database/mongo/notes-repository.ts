@@ -1,17 +1,10 @@
-import type { NotesRepository } from "../../../domain/repositories/notes-repository";
-import type { Note } from "../../../domain/entities/note";
 import { MongoRepository } from "./repository";
 import { injectable } from "inversify";
-import { NoteModel } from "./models/note";
-import type { Model } from "mongoose";
+import { NoteModel, type NoteModelType } from "./models/note";
 
-@injectable() // domain Note can not be here
-export class NotesMongoRepository
-  extends MongoRepository<Note>
-  implements NotesRepository
-{
+@injectable()
+export class NotesMongoRepository extends MongoRepository<NoteModelType> {
   constructor() {
-    const model = NoteModel as Model<Note>;
-    super(model);
+    super(NoteModel);
   }
 }
