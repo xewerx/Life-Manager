@@ -29,13 +29,17 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "inversify": "^7.6.1",
+    "mongoose": "^8.17.0",
     "nodemon": "^3.1.9",
     "pino": "^9.7.0",
     "reflect-metadata": "^0.2.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "uuid": "^11.1.0",
+    "zod": "^4.0.14"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4"
+    "@biomejs/biome": "^1.9.4",
+    "@types/mongoose": "^5.11.97"
   }
 }
