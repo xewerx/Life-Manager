@@ -12,6 +12,6 @@ export class CreateNoteCommand {
 
   async execute(title: string, content: string): Promise<void> {
     const note = new Note(title, content);
-    await this.notesRepository.create(note);
+    await this.notesRepository.create(note.toObject());
   }
 }
