@@ -27,7 +27,7 @@ export class PostNotesController extends Controller<NoteBody, void> {
   async handle(req: Request, _res: Response): Promise<void> {
     const { title, content } = req.body;
 
-    await this.createNoteCommand.execute(title, content);
+    await this.createNoteCommand.execute({ title, content });
   }
 
   async validate(req: Request): Promise<NoteBody> {
