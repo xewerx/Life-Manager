@@ -8,9 +8,18 @@ export const NOTES_CONTAINER_TYPES = {
 
   Repository: {
     Notes: Symbol("NotesRepository"),
+    NotesSearch: Symbol("NotesSearchRepository"),
+  },
+
+  SearchRepository: {
+    Notes: Symbol("NotesSearchRepository"),
   },
 
   Command: {
     CreateNote: Symbol("CreateNoteCommand"),
+  },
+
+  Config: {
+    ElasticSearch: Symbol("ElasticSearchConfig"),
   },
 };

@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 
 export abstract class Entity<T> {
-  protected readonly id: string;
+  public readonly id: string;
   protected readonly props: T;
 
   constructor(props: T) {

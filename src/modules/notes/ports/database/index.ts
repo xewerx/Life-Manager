@@ -1,6 +1,6 @@
-export interface Database<T> {
+export interface Database<Config> {
   connect(): Promise<void>;
   disconnect(): Promise<void>;
-  setConfig(config: T): void;
-  getConfig(): T;
+  setConfig(config: Config): void;
+  getConfig(): Config;
 }

@@ -9,6 +9,7 @@ import { MongoDatabase } from "../../adapters/database/mongo/mongo";
 import { checkForEnvironmentVariable } from "../../shared/utils/check-for-env-variable";
 import { injectRepositories } from "./inject-repositories";
 import { injectCommands } from "./inject-commands";
+import type { ElasticSearchConfig } from "../../adapters/database/elastic-search/types";
 
 export const makeContainer = async () => {
   const container = new Container();
@@ -27,6 +28,11 @@ export const makeContainer = async () => {
 
   await mongoDb.connect();
 
+  container
+    .bind<ElasticSearchConfig>(NOTES_CONTAINER_TYPES.Config.ElasticSearch)
+    .toConstantValue({
+      url: checkForEnvironmentVariable("ELASTICSEARCH_URL"),
+    });
   container.bind<Logger>(NOTES_CONTAINER_TYPES.Logger).toConstantValue(logger);
 
   injectRepositories(container);

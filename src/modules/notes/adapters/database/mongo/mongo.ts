@@ -11,7 +11,7 @@ export class MongoDatabase implements Database<MongoDatabaseConfig> {
       await mongoose.connect(this.config.url);
       this.logger.info("✅ Connected to MongoDB");
     } catch (err) {
-      this.logger.error("❌ MongoDB connection error:", err);
+      this.logger.error({ err }, "❌ MongoDB connection error");
       process.exit(1);
     }
   }
