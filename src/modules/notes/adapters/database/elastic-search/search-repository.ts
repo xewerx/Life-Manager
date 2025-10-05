@@ -3,8 +3,11 @@ import type { Client } from "@elastic/elasticsearch";
 import type { Logger } from "../../../../../shared/make-module-logger";
 import { ElasticSearchClient } from "./client";
 import type { ElasticSearchConfig } from "./types";
+import type { Entity } from "../../../domain/entities/entity";
 
-export class ElasticSearchRepository<T> implements SearchRepository<T> {
+export class ElasticSearchRepository<T extends Entity<unknown>>
+  implements SearchRepository<T>
+{
   private client: Client;
 
   constructor(config: ElasticSearchConfig, logger: Logger) {

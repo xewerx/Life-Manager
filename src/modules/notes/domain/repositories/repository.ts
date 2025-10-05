@@ -1,4 +1,6 @@
-export interface Repository<T> {
+import type { Entity } from "../entities/entity";
+
+export interface Repository<T extends Entity<unknown>> {
   findAll(): Promise<T[]>;
   findById(id: string): Promise<T | null>;
   create(data: T): Promise<void>;

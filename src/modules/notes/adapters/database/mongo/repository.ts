@@ -1,7 +1,8 @@
-import type { Model, Schema } from "mongoose";
+import type { Model } from "mongoose";
+import type { Entity } from "../../../domain/entities/entity";
 
-export class MongoRepository<T extends Schema> {
-  constructor(private model: Model<T>) {}
+export class MongoRepository<T extends Entity<unknown>> {
+  constructor(private model: Model<any>) {}
 
   async findById(id: string): Promise<T | null> {
     return this.model.findById(id);
