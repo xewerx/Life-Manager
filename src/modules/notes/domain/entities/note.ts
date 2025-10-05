@@ -5,12 +5,6 @@ type NoteProps = {
   content: string;
 };
 
-export type NoteObject = {
-  id: string;
-  title: string;
-  content: string;
-};
-
 export class Note extends Entity<NoteProps> {
   constructor(public title: string, public content: string) {
     super({ title, content });

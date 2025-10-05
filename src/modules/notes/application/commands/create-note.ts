@@ -23,9 +23,9 @@ export class CreateNoteCommand extends Command<CreateNoteCommandInput> {
 
   async execute(input: CreateNoteCommandInput): Promise<void> {
     const note = new Note(input.title, input.content);
-    await this.notesRepository.create(note.toObject());
+    await this.notesRepository.create(note);
 
     // TODO: move it to async event handler
-    await this.notesSearchRepository.index("notes", note.id, note.toObject());
+    await this.notesSearchRepository.index("notes", note.id, note);
   }
 }
